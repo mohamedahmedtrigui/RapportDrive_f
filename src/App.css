@@ -92,6 +92,12 @@
   color: #fff;
   font-weight: 700;
   font-size: 14px;
+  flex-shrink: 0;
+}
+
+.brand-mark svg {
+  width: 60%;
+  height: 60%;
 }
 
 .brand-name {

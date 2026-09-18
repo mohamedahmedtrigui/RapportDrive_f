@@ -214,3 +214,18 @@ export function SparkleIcon(props) {
     </svg>
   )
 }
+
+// App logo mark: a route pin, filled solid so it reads clearly on the
+// brand-mark's colored background (not an outline utility icon like the
+// others above).
+export function LogoIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2C7.6 2 4 5.6 4 10c0 5.6 6.4 11 7.3 11.7.4.3 1 .3 1.4 0C13.6 21 20 15.6 20 10c0-4.4-3.6-8-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
+      />
+    </svg>
+  )
+}
