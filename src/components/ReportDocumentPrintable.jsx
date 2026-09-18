@@ -30,7 +30,7 @@ export default function ReportDocumentPrintable({ report, onClose }) {
 
       <div className="print-document">
         <div className="print-doc-header">
-          <img src="/miraldrive-logo.png" alt="MiralDrive" className="print-doc-logo" />
+          <img src="/rapport.png" alt="RapportDrive" className="print-doc-logo" />
           <div className="print-doc-company">
             <strong>MiralDrive</strong>
             <span>Rapport d&rsquo;activité chauffeurs</span>

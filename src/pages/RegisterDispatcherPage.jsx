@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { registerDispatcher } from '../api/auth'
 import { firstValidationError } from '../utils/errors'
-import { LogoIcon } from '../components/icons'
 
 export default function RegisterDispatcherPage() {
   const [nom, setNom] = useState('')
@@ -38,7 +37,7 @@ export default function RegisterDispatcherPage() {
       <div className="login-card">
         <div className="login-brand">
           <span className="brand-mark">
-            <LogoIcon />
+            <img src="/rapport.png" alt="RapportDrive" />
           </span>
           <h1 style={{ margin: 0 }}>RapportDrive</h1>
         </div>

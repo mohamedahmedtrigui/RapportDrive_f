@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/useAuth'
 import { firstValidationError } from '../utils/errors'
-import { LogoIcon } from '../components/icons'
 
 export default function LoginPage() {
   const [type, setType] = useState('dispatcher')
@@ -45,7 +44,7 @@ export default function LoginPage() {
       <div className="login-card">
         <div className="login-brand">
           <span className="brand-mark">
-            <LogoIcon />
+            <img src="/rapport.png" alt="RapportDrive" />
           </span>
           <h1 style={{ margin: 0 }}>RapportDrive</h1>
         </div>

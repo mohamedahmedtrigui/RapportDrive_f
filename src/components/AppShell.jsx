@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { useAuth } from '../context/useAuth'
 import { useTheme } from '../context/useTheme'
-import { SunIcon, MoonIcon, MenuIcon, CloseIcon, LogoutIcon, LogoIcon } from './icons'
+import { SunIcon, MoonIcon, MenuIcon, CloseIcon, LogoutIcon } from './icons'
 import ChatWidget from './ChatWidget'
 import NotificationBell from './NotificationBell'
 
@@ -25,7 +25,7 @@ export default function AppShell({ title, subtitle, navItems, showChat = false }
 
         <div className="navbar-brand">
           <span className="brand-mark">
-            <LogoIcon />
+            <img src="/rapport.png" alt="RapportDrive" />
           </span>
           <span className="brand-name">RapportDrive</span>
         </div>

@@ -13,8 +13,8 @@ export default function ManagerLayout() {
       navItems={[
         { to: '/manager/dashboard', label: 'Dashboard', icon: <DashboardIcon /> },
         { to: '/manager/reports', label: 'Rapports', icon: <ReportsIcon /> },
-        { to: '/manager/entries', label: 'Entrées', icon: <EntriesIcon /> },
-        { to: '/manager/drivers', label: 'Chauffeurs', icon: <DriverIcon /> },
+        // { to: '/manager/entries', label: 'Entrées', icon: <EntriesIcon /> },
+        // { to: '/manager/drivers', label: 'Chauffeurs', icon: <DriverIcon /> },
         { to: '/manager/zones', label: 'Zones', icon: <ZoneIcon /> },
         { to: '/manager/dispatchers', label: 'Dispatchers', icon: <DispatcherIcon /> },
       ]}

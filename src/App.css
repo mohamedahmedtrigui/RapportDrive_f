@@ -88,16 +88,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  color: #fff;
-  font-weight: 700;
-  font-size: 14px;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
-.brand-mark svg {
-  width: 60%;
-  height: 60%;
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .brand-name {
