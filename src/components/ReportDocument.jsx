@@ -88,15 +88,20 @@ export default function ReportDocument({
                 </div>
               )}
             </div>
-            {(entry.driver || entry.client_nom || entry.zone) && (
-              <p className="report-entry-driver">
-                {entry.driver && `Chauffeur : ${entry.driver.nom}`}
-                {entry.driver && entry.client_nom && ' · '}
-                {entry.client_nom && `Client : ${entry.client_nom}`}
-                {(entry.driver || entry.client_nom) && entry.zone && ' · '}
-                {entry.zone && `Zone : ${entry.zone.nom}`}
-              </p>
-            )}
+            {(() => {
+              const driverName = entry.driver_nom || entry.driver?.nom
+              return (
+                (driverName || entry.client_nom || entry.zone) && (
+                  <p className="report-entry-driver">
+                    {driverName && `Chauffeur : ${driverName}`}
+                    {driverName && entry.client_nom && ' · '}
+                    {entry.client_nom && `Client : ${entry.client_nom}`}
+                    {(driverName || entry.client_nom) && entry.zone && ' · '}
+                    {entry.zone && `Zone : ${entry.zone.nom}`}
+                  </p>
+                )
+              )
+            })()}
           </article>
         ))
       )}

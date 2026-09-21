@@ -97,7 +97,7 @@ export default function ReportDocumentPrintable({ report, onClose }) {
                 {entries.map((entry) => (
                   <tr key={entry.id} className={entry.severite === 'haute' ? 'doc-row-grave' : ''}>
                     <td>{entry.course_id}</td>
-                    <td>{entry.driver?.nom ?? '—'}</td>
+                    <td>{entry.driver?.nom ?? entry.driver_nom ?? '—'}</td>
                     <td>{entry.client_nom ?? '—'}</td>
                     <td>{entry.zone?.nom ?? '—'}</td>
                     <td>{entry.description}</td>

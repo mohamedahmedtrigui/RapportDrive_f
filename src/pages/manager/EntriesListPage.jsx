@@ -123,7 +123,7 @@ export default function EntriesListPage() {
                     {entry.driver ? (
                       <Link to={`/manager/drivers/${entry.driver.id}`}>{entry.driver.nom}</Link>
                     ) : (
-                      '—'
+                      entry.driver_nom ?? '—'
                     )}
                   </td>
                   <td>{entry.client_nom ?? '—'}</td>

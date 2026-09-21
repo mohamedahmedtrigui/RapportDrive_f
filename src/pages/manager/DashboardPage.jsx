@@ -102,7 +102,7 @@ export default function DashboardPage() {
                 <div className="mini-list-row" key={entry.id}>
                   <div className="mini-list-main">
                     <Link to={`/manager/reports/${entry.report_id}`} className="mini-list-title">
-                      {entry.driver?.nom ?? entry.client_nom ?? entry.course_id}
+                      {entry.driver?.nom ?? entry.driver_nom ?? entry.client_nom ?? entry.course_id}
                     </Link>
                     <span className="mini-list-sub">{entry.description}</span>
                   </div>

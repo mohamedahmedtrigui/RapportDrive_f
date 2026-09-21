@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getReport, analyzeReport } from '../../api/reports'
 import { addEntry, updateEntry, deleteEntry } from '../../api/entries'
-import { listDrivers } from '../../api/drivers'
 import { listZones } from '../../api/zones'
 import Loading from '../../components/Loading'
 import ReportDocument from '../../components/ReportDocument'
@@ -14,7 +13,6 @@ const emptyEntryForm = { course_id: '', driver_nom: '', client_nom: '', zone_id:
 export default function ReportDetailPage() {
   const { id } = useParams()
   const [report, setReport] = useState(null)
-  const [drivers, setDrivers] = useState([])
   const [zones, setZones] = useState([])
   const [error, setError] = useState(null)
 
@@ -33,7 +31,6 @@ export default function ReportDetailPage() {
 
   useEffect(() => {
     loadReport()
-    listDrivers().then(({ data }) => setDrivers(data))
     listZones().then(({ data }) => setZones(data))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
@@ -43,12 +40,10 @@ export default function ReportDetailPage() {
     setError(null)
     setSubmitting(true)
 
-    const matchedDriver = drivers.find((d) => d.nom === entryForm.driver_nom)
-
     try {
       const { data } = await addEntry(id, {
         course_id: entryForm.course_id,
-        driver_id: matchedDriver?.id ?? null,
+        driver_nom: entryForm.driver_nom || null,
         client_nom: entryForm.client_nom || null,
         zone_id: entryForm.zone_id || null,
         description: entryForm.description,
@@ -65,7 +60,7 @@ export default function ReportDetailPage() {
   const openEditEntry = (entry) => {
     setEditForm({
       course_id: entry.course_id,
-      driver_nom: entry.driver?.nom ?? '',
+      driver_nom: entry.driver_nom ?? entry.driver?.nom ?? '',
       client_nom: entry.client_nom ?? '',
       zone_id: entry.zone?.id ?? '',
       description: entry.description,
@@ -82,12 +77,10 @@ export default function ReportDetailPage() {
   const confirmEditEntry = async () => {
     setBusy(true)
     setError(null)
-    const matchedDriver = drivers.find((d) => d.nom === pendingEdit.data.driver_nom)
-
     try {
       const { data } = await updateEntry(id, pendingEdit.entry.id, {
         course_id: pendingEdit.data.course_id,
-        driver_id: matchedDriver?.id ?? null,
+        driver_nom: pendingEdit.data.driver_nom || null,
         client_nom: pendingEdit.data.client_nom || null,
         zone_id: pendingEdit.data.zone_id || null,
         description: pendingEdit.data.description,
@@ -190,16 +183,10 @@ export default function ReportDetailPage() {
               <label htmlFor="driver">Chauffeur</label>
               <input
                 id="driver"
-                list="drivers-list"
                 value={entryForm.driver_nom}
                 onChange={(e) => setEntryForm({ ...entryForm, driver_nom: e.target.value })}
-                placeholder="Rechercher un chauffeur…"
+                placeholder="Nom du chauffeur…"
               />
-              <datalist id="drivers-list">
-                {drivers.map((d) => (
-                  <option key={d.id} value={d.nom} />
-                ))}
-              </datalist>
             </div>
             <div className="field">
               <label htmlFor="client">Client</label>
@@ -269,10 +256,9 @@ export default function ReportDetailPage() {
               <label htmlFor="edit_driver">Chauffeur</label>
               <input
                 id="edit_driver"
-                list="drivers-list"
                 value={editForm.driver_nom}
                 onChange={(e) => setEditForm({ ...editForm, driver_nom: e.target.value })}
-                placeholder="Rechercher un chauffeur…"
+                placeholder="Nom du chauffeur…"
               />
             </div>
             <div className="field">
