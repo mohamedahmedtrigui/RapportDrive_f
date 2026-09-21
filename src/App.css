@@ -1018,6 +1018,14 @@ table tbody tr:last-child td {
   color: var(--danger);
 }
 
+.ai-summary-list {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .ai-summary.read .ai-summary-head {
   color: var(--text-muted);
 }

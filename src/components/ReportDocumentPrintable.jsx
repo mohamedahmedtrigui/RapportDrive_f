@@ -64,7 +64,15 @@ export default function ReportDocumentPrintable({ report, onClose }) {
         {report.ai_summary && (
           <div className="print-doc-summary">
             <strong>Récap IA — éléments à surveiller</strong>
-            <p>{report.ai_summary}</p>
+            <ul>
+              {report.ai_summary
+                .split('\n')
+                .map((line) => line.replace(/^-\s*/, '').trim())
+                .filter(Boolean)
+                .map((line, i) => (
+                  <li key={i}>{line}</li>
+                ))}
+            </ul>
           </div>
         )}
 

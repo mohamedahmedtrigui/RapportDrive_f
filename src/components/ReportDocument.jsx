@@ -33,7 +33,15 @@ export default function ReportDocument({
             <AlertIcon width={18} height={18} className={isRead ? '' : 'icon-pulse'} />
             <strong>Récap IA — éléments à surveiller</strong>
           </div>
-          <p>{report.ai_summary}</p>
+          <ul className="ai-summary-list">
+            {report.ai_summary
+              .split('\n')
+              .map((line) => line.replace(/^-\s*/, '').trim())
+              .filter(Boolean)
+              .map((line, i) => (
+                <li key={i}>{line}</li>
+              ))}
+          </ul>
           {onMarkSummaryRead && (
             <label className="ai-summary-check">
               <input
