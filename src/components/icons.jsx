@@ -196,6 +196,16 @@ export function ClockIcon(props) {
   )
 }
 
+export function ErrorCircleIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9.5 9.5l5 5" />
+      <path d="M14.5 9.5l-5 5" />
+    </svg>
+  )
+}
+
 export function PrinterIcon(props) {
   return (
     <svg {...base} {...props}>

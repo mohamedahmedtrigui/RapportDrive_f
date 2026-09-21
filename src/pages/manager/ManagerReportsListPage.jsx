@@ -7,6 +7,7 @@ import Modal from '../../components/Modal'
 import ConfirmDialog from '../../components/ConfirmDialog'
 import Pagination from '../../components/Pagination'
 import { EyeIcon, EditIcon, TrashIcon, AlertIcon } from '../../components/icons'
+import IaStatusIcon from '../../components/IaStatusIcon'
 
 export default function ManagerReportsListPage() {
   const navigate = useNavigate()
@@ -42,6 +43,23 @@ export default function ManagerReportsListPage() {
   useEffect(() => {
     load({}, 1)
   }, [])
+
+  // Keeps the "analyse en cours" icon live without a manual refresh: as long
+  // as some report on the current page is still being analyzed, poll until
+  // it flips to "termine"/"erreur".
+  useEffect(() => {
+    if (!reports.some((r) => r.ia_status === 'en_cours')) {
+      return
+    }
+
+    const timer = setTimeout(
+      () => load({ titre: titre || undefined, date: date || undefined }, page),
+      4000,
+    )
+
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reports, page])
 
   const currentFilters = () => ({ titre: titre || undefined, date: date || undefined })
 
@@ -147,6 +165,7 @@ export default function ManagerReportsListPage() {
                     <td>
                       <span className="report-id-cell">
                         #{report.id}
+                        <IaStatusIcon status={report.ia_status} />
                         {hasUnreadAlert && (
                           <span
                             className="alert-dot"

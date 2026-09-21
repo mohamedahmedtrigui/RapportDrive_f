@@ -1307,6 +1307,23 @@ table tbody tr:last-child td {
   color: var(--danger);
 }
 
+.ia-status-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ia-status-icon.en_cours {
+  color: var(--accent);
+}
+
+.ia-status-icon.termine {
+  color: var(--success);
+}
+
+.ia-status-icon.erreur {
+  color: var(--danger);
+}
+
 .report-id-cell {
   display: inline-flex;
   align-items: center;
